@@ -1,3 +1,5 @@
+# Dar uma olhada
+
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
