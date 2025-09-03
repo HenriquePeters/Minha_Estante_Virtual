@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow-sm p-4">
+    <h2 class="mb-4">Livros</h2>
+
+    <form method="POST" class="mb-4">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.titulo.label(class="form-label") }}
+            {{ form.titulo(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.ano_publicacao.label(class="form-label") }}
+            {{ form.ano_publicacao(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.autor.label(class="form-label") }}
+            {{ form.autor(class="form-select") }}
+        </div>
+        {{ form.submit(class="btn btn-success") }}
+    </form>
+
+    <h3>Lista de Livros</h3>
+    <ul class="list-group">
+        {% for livro in livros %}
+            <li class="list-group-item">
+                <strong>{{ livro.titulo }}</strong> ({{ livro.ano_publicacao }})  
+                <span class="text-muted">- Autor: {{ livro.autor.nome }}</span>
+            </li>
+        {% else %}
+            <li class="list-group-item text-muted">Nenhum livro cadastrado.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

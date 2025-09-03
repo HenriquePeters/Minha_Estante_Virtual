@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow-sm p-4">
+    <h2 class="mb-4">Autores</h2>
+
+    <form method="POST" class="mb-4">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.nome.label(class="form-label") }}
+            {{ form.nome(class="form-control") }}
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+
+    <h3>Lista de Autores</h3>
+    <ul class="list-group">
+        {% for autor in autores %}
+            <li class="list-group-item">{{ autor.nome }}</li>
+        {% else %}
+            <li class="list-group-item text-muted">Nenhum autor cadastrado.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
